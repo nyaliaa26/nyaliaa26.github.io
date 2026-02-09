@@ -1,4 +1,313 @@
 <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Dahlia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+        :root {
+            --primary-pink: #ff85a2;
+            --soft-pink: #fbc2eb;
+            --deep-pink: #f06292;
+            --bg-light: #fff5f7;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: #4a4a4a;
+            scroll-behavior: smooth;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #fbc2eb 0%, #ffdeeb 100%);
+        }
+
+        .pink-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 133, 162, 0.2);
+        }
+
+        .btn-pink {
+            background-color: var(--primary-pink);
+            transition: all 0.3s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--deep-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 133, 162, 0.4);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #ffe4ec;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-pink), var(--deep-pink));
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--primary-pink);
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary-pink);
+            border: 3px solid white;
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: -15px;
+            bottom: -15px;
+            border: 3px solid var(--primary-pink);
+            border-radius: 2rem;
+            z-index: -1;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav class="fixed w-full z-50 pink-glass shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-serif font-bold text-pink-600 tracking-tighter">Dahlia.</h1>
+            <div class="hidden md:flex space-x-10 font-medium text-xs tracking-widest uppercase">
+                <a href="#home" class="hover:text-pink-500 transition-colors">Beranda</a>
+                <a href="#about" class="hover:text-pink-500 transition-colors">Tentang</a>
+                <a href="#education" class="hover:text-pink-500 transition-colors">Pendidikan</a>
+                <a href="#skills" class="hover:text-pink-500 transition-colors">Keahlian</a>
+                <a href="#portfolio" class="hover:text-pink-500 transition-colors">Karya</a>
+                <a href="#contact" class="hover:text-pink-500 transition-colors">Kontak</a>
+            </div>
+            <div class="md:hidden text-pink-600">
+                <i class="fas fa-bars text-xl"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center hero-gradient pt-20">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 px-4 text-center md:text-left">
+            <div class="md:w-1/2 order-2 md:order-1">
+                <h2 class="text-pink-600 font-semibold tracking-widest uppercase mb-4 text-sm">Portofolio Kreatif</h2>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-gray-800 mb-6 leading-tight">Dahlia.</h1>
+                <p class="text-lg text-gray-700 mb-8 max-w-lg leading-relaxed">
+                    Seorang kreator muda asal Indramayu yang lahir pada tahun 2008. Berdedikasi untuk mengubah ide menjadi desain visual yang memukau.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#contact" class="btn-pink text-white px-10 py-4 rounded-full font-semibold shadow-lg shadow-pink-200">Hubungi Saya</a>
+                    <a href="https://www.instagram.com/th3vyll.vvai" target="_blank" class="bg-white text-pink-600 px-10 py-4 rounded-full font-semibold hover:bg-pink-50 transition border border-pink-100 shadow-sm">Instagram</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center order-1 md:order-2">
+                <div class="profile-img-container">
+                    <!-- Foto Profil -->
+                    <img src="https://i.ibb.co.com/dsLyXXCT/dahlia-profile.jpg" 
+                         alt="Foto Profil Dahlia" 
+                         class="rounded-[2rem] shadow-2xl w-72 h-96 object-cover border-4 border-white"
+                         onerror="this.src='https://via.placeholder.com/300x400?text=Dahlia+Indramayu'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Saya (About) -->
+    <section id="about" class="bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h2 class="text-4xl font-serif font-bold text-gray-800 mb-2">Tentang Saya</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto md:mx-0 rounded-full mb-6"></div>
+                    <div class="inline-block p-4 bg-pink-50 rounded-2xl border border-pink-100">
+                         <p class="text-pink-600 font-bold text-lg">Indramayu</p>
+                         <p class="text-gray-500 text-sm italic">Jawa Barat, Indonesia</p>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed text-xl mb-6 font-light">
+                        Halo! Nama saya <span class="text-pink-500 font-semibold">Dahlia</span>. Saya lahir di <span class="font-semibold text-gray-800">Indramayu</span> pada tahun <span class="font-semibold text-gray-800">2008</span>.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Di usia saya yang ke-17 tahun ini, saya sangat antusias mengeksplorasi dunia desain grafis. Tumbuh di Indramayu memberikan saya inspirasi untuk terus berkarya dan memberikan kontribusi kreatif melalui seni digital.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-pink-50/50 rounded-xl text-center">
+                            <span class="block text-pink-500 font-bold text-xl">17</span>
+                            <span class="text-gray-500 text-xs uppercase tracking-widest">Umur Sekarang</span>
+                        </div>
+                        <div class="p-4 bg-pink-50/50 rounded-xl text-center">
+                            <span class="block text-pink-500 font-bold text-xl">2008</span>
+                            <span class="text-gray-500 text-xs uppercase tracking-widest">Tahun Lahir</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pendidikan (Education) -->
+    <section id="education" class="bg-pink-50/30">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-12 flex items-center justify-center">
+                <span class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center mr-4 text-pink-500">
+                    <i class="fas fa-graduation-cap"></i>
+                </span>
+                Riwayat Pendidikan
+            </h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-pink-100">
+                <div class="timeline-item">
+                    <span class="text-xs font-bold text-pink-500 bg-pink-50 px-3 py-1 rounded-full uppercase tracking-wider">2023 - 2026</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-2">SMK Al Irsyad Al Islamiyyah Haurgeulis</h3>
+                    <p class="text-gray-500 text-sm italic">Pendidikan Menengah Kejuruan</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="text-xs font-bold text-pink-500 bg-pink-50 px-3 py-1 rounded-full uppercase tracking-wider">2020 - 2023</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-2">MTs Ma'arif Miftahul Huda</h3>
+                    <p class="text-gray-500 text-sm italic">Pendidikan Menengah Pertama</p>
+                </div>
+                <div class="timeline-item mb-0">
+                    <span class="text-xs font-bold text-pink-500 bg-pink-50 px-3 py-1 rounded-full uppercase tracking-wider">2014 - 2020</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-2">SDN 4 Cipaat</h3>
+                    <p class="text-gray-500 text-sm italic">Pendidikan Dasar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keahlian (Skills) -->
+    <section id="skills" class="bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-12 text-center flex items-center justify-center">
+                <span class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center mr-4 text-pink-500">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                </span>
+                Keahlian Kreatif
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-bold text-gray-700">CorelDRAW</span>
+                        <span class="text-pink-600 font-bold">70%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-bold text-gray-700">Adobe Illustrator</span>
+                        <span class="text-pink-600 font-bold">60%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-bold text-gray-700">Canva</span>
+                        <span class="text-pink-600 font-bold">70%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-bold text-gray-700">Adobe Photoshop</span>
+                        <span class="text-pink-600 font-bold">70%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak (Contact) -->
+    <section id="contact" class="bg-pink-50/30">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-serif font-bold text-gray-800 mb-6">Hubungi Saya</h2>
+            <p class="text-gray-600 mb-10">Mari buat sesuatu yang luar biasa bersama!</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Gmail -->
+                <a href="mailto:dahlialiaa140@gmail.com" class="p-6 bg-white rounded-2xl border border-pink-100 shadow-sm hover:scale-105 transition-transform">
+                    <i class="fas fa-envelope text-pink-500 text-3xl mb-3"></i>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Email</p>
+                    <p class="font-bold text-sm">dahlialiaa140@gmail.com</p>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/th3vyll.vvai" target="_blank" class="p-6 bg-white rounded-2xl border border-pink-100 shadow-sm hover:scale-105 transition-transform">
+                    <i class="fab fa-instagram text-pink-500 text-3xl mb-3"></i>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Instagram</p>
+                    <p class="font-bold text-sm">@th3vyll.vvai</p>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/628782755039" target="_blank" class="p-6 bg-white rounded-2xl border border-pink-100 shadow-sm hover:scale-105 transition-transform">
+                    <i class="fab fa-whatsapp text-pink-500 text-3xl mb-3"></i>
+                    <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">WhatsApp</p>
+                    <p class="font-bold text-sm">0878-2755-039</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-white border-t border-pink-100 text-center">
+        <p class="text-gray-400 text-xs tracking-widest uppercase">
+            &copy; 2026 DAHLIA — KREATOR MUDA DARI INDRAMAYU
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
 
 <html>
 <head>
