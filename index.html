@@ -48,8 +48,9 @@
             box-shadow: 0 4px 15px rgba(255, 133, 162, 0.4);
         }
 
-        .skill-bar-container {
-            margin-bottom: 1.5rem;
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(255, 133, 162, 0.1);
+            border: 1px solid rgba(255, 133, 162, 0.1);
         }
 
         .skill-bar {
@@ -57,14 +58,12 @@
             background-color: #ffe4ec;
             border-radius: 10px;
             overflow: hidden;
-            position: relative;
         }
 
         .skill-progress {
             height: 100%;
             background: linear-gradient(90deg, var(--primary-pink), var(--deep-pink));
             border-radius: 10px;
-            transition: width 1.5s ease-in-out;
         }
 
         .timeline-item {
@@ -84,28 +83,14 @@
             border-radius: 50%;
             background-color: var(--primary-pink);
             border: 3px solid white;
-            box-shadow: 0 0 10px rgba(255, 133, 162, 0.3);
-        }
-
-        .profile-img-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: -15px;
-            bottom: -15px;
-            border: 3px solid var(--primary-pink);
-            border-radius: 2rem;
-            z-index: -1;
         }
 
         section {
             padding: 80px 20px;
+        }
+
+        .cert-card:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -115,17 +100,17 @@
     <nav class="fixed w-full z-50 pink-glass shadow-sm">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-serif font-bold text-pink-600 tracking-tighter">Dahlia.</h1>
-            <div class="hidden md:flex space-x-8 font-medium text-xs tracking-widest uppercase">
+            <div class="hidden md:flex space-x-8 font-medium text-xs tracking-widest uppercase text-gray-600">
                 <a href="#home" class="hover:text-pink-500 transition-colors">Beranda</a>
                 <a href="#about" class="hover:text-pink-500 transition-colors">Tentang</a>
-                <a href="#education" class="hover:text-pink-500 transition-colors">Pendidikan</a>
                 <a href="#skills" class="hover:text-pink-500 transition-colors">Keahlian</a>
+                <a href="#certificates" class="hover:text-pink-500 transition-colors">Sertifikat</a>
                 <a href="#testimonials" class="hover:text-pink-500 transition-colors">Testimoni</a>
                 <a href="#contact" class="hover:text-pink-500 transition-colors">Kontak</a>
             </div>
-            <div class="md:hidden text-pink-600">
+            <button class="md:hidden text-pink-600">
                 <i class="fas fa-bars text-xl"></i>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -133,130 +118,185 @@
     <section id="home" class="min-h-screen flex items-center justify-center hero-gradient pt-20">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 px-4 text-center md:text-left">
             <div class="md:w-1/2 order-2 md:order-1">
-                <h2 class="text-pink-600 font-semibold tracking-widest uppercase mb-4 text-sm">Desainer Grafis Muda</h2>
+                <h2 class="text-pink-600 font-semibold tracking-widest uppercase mb-4 text-sm">Pelajar & Desainer Muda</h2>
                 <h1 class="text-5xl md:text-7xl font-serif font-bold text-gray-800 mb-6 leading-tight">Dahlia.</h1>
-                <p class="text-lg text-gray-700 mb-8 max-w-lg leading-relaxed">
-                    Siswa SMK Al Irsyad Al Islamiyyah Haurgeulis. Menggabungkan kreativitas desain dengan kedisiplinan organisasi.
+                <p class="text-lg text-gray-700 mb-8 max-w-lg leading-relaxed italic">
+                    "Kreativitas tanpa batas, disiplin dalam organisasi."
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
                     <a href="#contact" class="btn-pink text-white px-10 py-4 rounded-full font-semibold shadow-lg shadow-pink-200">Hubungi Saya</a>
-                    <a href="#skills" class="bg-white text-pink-600 px-10 py-4 rounded-full font-semibold hover:bg-pink-50 transition border border-pink-100 shadow-sm">Lihat Keahlian</a>
+                    <a href="#certificates" class="bg-white text-pink-600 px-10 py-4 rounded-full font-semibold hover:bg-pink-50 transition border border-pink-100 shadow-sm">Lihat Sertifikat</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center order-1 md:order-2">
-                <div class="profile-img-container">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-pink-400 rounded-[2rem] transform rotate-6 scale-105 opacity-20"></div>
                     <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/232410060/1770601566_15e4e69c.jpg" 
                          alt="Foto Profil Dahlia" 
-                         class="rounded-[2rem] shadow-2xl w-72 h-96 object-cover border-4 border-white"
+                         class="relative z-10 rounded-[2rem] shadow-2xl w-64 h-80 md:w-72 md:h-96 object-cover border-4 border-white"
                          onerror="this.src='https://via.placeholder.com/300x400?text=Dahlia+Indramayu'">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Keahlian (Skills) -->
-    <section id="skills" class="bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-serif font-bold text-gray-800 mb-4">Keahlian Teknis</h2>
-                <p class="text-gray-500 italic">Penguasaan perangkat lunak desain dan seni visual</p>
-                <div class="w-20 h-1 bg-pink-400 mx-auto mt-4 rounded-full"></div>
+    <!-- Tentang Saya -->
+    <section id="about" class="bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h2 class="text-4xl font-serif font-bold text-gray-800 mb-2">Profil</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto md:mx-0 rounded-full mb-6"></div>
+                    <div class="space-y-4">
+                         <div class="p-4 bg-pink-50 rounded-2xl border border-pink-100">
+                             <p class="text-pink-600 font-bold text-xl">17 Tahun</p>
+                             <p class="text-gray-500 text-xs uppercase tracking-widest">Usia (Lahir 2008)</p>
+                         </div>
+                         <div class="p-4 bg-pink-50 rounded-2xl border border-pink-100">
+                             <p class="text-pink-600 font-bold text-xl">Indramayu</p>
+                             <p class="text-gray-500 text-xs uppercase tracking-widest">Asal Daerah</p>
+                         </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                        Saya adalah siswi di <span class="text-pink-500 font-semibold">SMK Al Irsyad Al Islamiyyah Haurgeulis</span>. Memiliki semangat tinggi dalam bidang desain grafis dan aktif dalam kegiatan kepanduan Pramuka.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Pengalaman saya selama mengikuti program **Praktek Kerja Lapangan (PKL)** telah mengasah etika kerja profesional saya, sementara kegiatan **Pramuka** membekali saya dengan jiwa kepemimpinan dan kemandirian. Saya percaya bahwa kombinasi antara skill teknis dan karakter yang kuat adalah kunci kesuksesan.
+                    </p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 max-w-4xl mx-auto">
-                <!-- CorelDRAW -->
-                <div class="skill-bar-container">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-bold text-gray-700">CorelDRAW</span>
-                        <span class="text-pink-600 font-bold">70%</span>
+    <!-- Keahlian -->
+    <section id="skills" class="bg-pink-50/30">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-12 text-center">Keahlian Desain</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                <div>
+                    <div class="flex justify-between mb-2 font-bold text-sm text-gray-700"><span>CorelDRAW</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2 font-bold text-sm text-gray-700"><span>Adobe Illustrator</span><span>60%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2 font-bold text-sm text-gray-700"><span>Canva</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2 font-bold text-sm text-gray-700"><span>Adobe Photoshop</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sertifikat (Pramuka & PKL) -->
+    <section id="certificates" class="bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-serif font-bold text-gray-800 mb-4">Sertifikasi & Pengalaman</h2>
+            <div class="w-20 h-1 bg-pink-400 mx-auto rounded-full mb-12"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto text-left">
+                <!-- Sertifikat Pramuka -->
+                <div class="cert-card group bg-pink-50 rounded-[2rem] overflow-hidden card-shadow">
+                    <div class="h-56 bg-pink-200 overflow-hidden relative flex items-center justify-center">
+                        <i class="fas fa-medal text-pink-400 text-7xl opacity-50"></i>
+                        <span class="absolute inset-0 flex items-center justify-center text-pink-600 font-bold opacity-0 group-hover:opacity-100 transition-opacity bg-pink-100/80">Lihat Detail</span>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Sertifikat Pramuka</h3>
+                            <span class="bg-pink-500 text-white text-[10px] px-3 py-1 rounded-full uppercase">Kepanduan</span>
+                        </div>
+                        <p class="text-gray-500 text-sm">Penghargaan atas dedikasi dan pencapaian kompetensi dalam kegiatan kepramukaan tingkat sekolah.</p>
                     </div>
                 </div>
 
-                <!-- Adobe Illustrator -->
-                <div class="skill-bar-container">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-bold text-gray-700">Adobe Illustrator</span>
-                        <span class="text-pink-600 font-bold">60%</span>
+                <!-- Sertifikat PKL -->
+                <div class="cert-card group bg-pink-50 rounded-[2rem] overflow-hidden card-shadow">
+                    <div class="h-56 bg-pink-200 overflow-hidden relative flex items-center justify-center">
+                        <i class="fas fa-certificate text-pink-400 text-7xl opacity-50"></i>
+                        <span class="absolute inset-0 flex items-center justify-center text-pink-600 font-bold opacity-0 group-hover:opacity-100 transition-opacity bg-pink-100/80">Lihat Detail</span>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 60%"></div>
-                    </div>
-                </div>
-
-                <!-- Canva -->
-                <div class="skill-bar-container">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-bold text-gray-700">Canva</span>
-                        <span class="text-pink-600 font-bold">70%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%"></div>
-                    </div>
-                </div>
-
-                <!-- Adobe Photoshop -->
-                <div class="skill-bar-container">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-bold text-gray-700">Adobe Photoshop</span>
-                        <span class="text-pink-600 font-bold">70%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Sertifikat PKL</h3>
+                            <span class="bg-blue-500 text-white text-[10px] px-3 py-1 rounded-full uppercase">Industri</span>
+                        </div>
+                        <p class="text-gray-500 text-sm">Praktek Kerja Lapangan yang berhasil diselesaikan dengan fokus pada implementasi desain grafis.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pendidikan (Riwayat Sekolah) -->
-    <section id="education" class="bg-pink-50/30">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-serif font-bold text-gray-800 mb-4">Riwayat Pendidikan</h2>
-                <div class="w-20 h-1 bg-pink-400 mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div class="relative max-w-2xl mx-auto">
-                <div class="timeline-item">
-                    <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                        <span class="text-xs font-bold text-pink-500 uppercase tracking-widest">2023 - 2026</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-2">SMK Al Irsyad Al Islamiyyah Haurgeulis</h3>
-                        <p class="text-gray-600 text-sm">Siswa Aktif</p>
+    <!-- Testimonial Section -->
+    <section id="testimonials" class="bg-pink-50/50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-serif font-bold text-gray-800 mb-12 text-center italic">"Apa Kata Mereka"</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimoni 1 -->
+                <div class="bg-white p-10 rounded-[2.5rem] card-shadow relative">
+                    <div class="absolute -top-5 left-10 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 italic leading-relaxed mb-8 pt-4">
+                        "Dahlia memiliki kedisiplinan yang sangat baik selama masa PKL. Hasil kerjanya rapi dan ia sangat cepat belajar hal-hal baru di industri."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-pink-50 pt-6">
+                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Pembimbing PKL</h4>
+                            <p class="text-gray-400 text-xs">Dunia Usaha & Industri</p>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                        <span class="text-xs font-bold text-pink-500 uppercase tracking-widest">2020 - 2023</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-2">MTs Ma'arif Miftahul Huda</h3>
-                        <p class="text-gray-600 text-sm">Lulusan</p>
+
+                <!-- Testimoni 2 -->
+                <div class="bg-white p-10 rounded-[2.5rem] card-shadow relative">
+                    <div class="absolute -top-5 left-10 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-quote-left"></i>
                     </div>
+                    <p class="text-gray-600 italic leading-relaxed mb-8 pt-4">
+                        "Kepemimpinan Dahlia dalam regu Pramuka sangat menginspirasi anggota lainnya. Ia tangguh dan memiliki karakter yang kuat."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-pink-50 pt-6">
+                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500">
+                            <i class="fas fa-campground"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Pembina Pramuka</h4>
+                            <p class="text-gray-400 text-xs">SMK Al Irsyad Al Islamiyyah</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pendidikan -->
+    <section id="education" class="bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-12">Perjalanan Akademik</h2>
+            <div class="relative max-w-2xl mx-auto text-left">
+                <div class="timeline-item">
+                    <span class="text-xs font-bold text-pink-500 uppercase tracking-widest">2023 - 2026</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-1">SMK Al Irsyad Al Islamiyyah Haurgeulis</h3>
+                </div>
+                <div class="timeline-item">
+                    <span class="text-xs font-bold text-pink-500 uppercase tracking-widest">2020 - 2023</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-1">MTs Ma'arif Miftahul Huda</h3>
                 </div>
                 <div class="timeline-item mb-0">
-                    <div class="bg-white p-6 rounded-2xl border border-pink-100 shadow-sm">
-                        <span class="text-xs font-bold text-pink-500 uppercase tracking-widest">2014 - 2020</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-2">SDN 4 Cipaat</h3>
-                        <p class="text-gray-600 text-sm">Lulusan</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-white">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-serif font-bold text-gray-800 mb-16">Testimoni</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-pink-50 p-8 rounded-[2rem] text-left border border-pink-100">
-                    <p class="text-gray-600 italic mb-6">"Dahlia menunjukkan integritas tinggi dan kedisiplinan yang luar biasa selama masa PKL."</p>
-                    <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wider">Pembimbing PKL</h4>
-                </div>
-                <div class="bg-pink-50 p-8 rounded-[2rem] text-left border border-pink-100">
-                    <p class="text-gray-600 italic mb-6">"Jiwa kepemimpinan Dahlia dalam Pramuka sangat membantu tim mencapai target kegiatan."</p>
-                    <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wider">Pembina Pramuka</h4>
+                    <span class="text-xs font-bold text-pink-500 uppercase tracking-widest">2014 - 2020</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-1">SDN 4 Cipaat</h3>
                 </div>
             </div>
         </div>
@@ -265,26 +305,29 @@
     <!-- Kontak -->
     <section id="contact" class="bg-pink-50/50">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-serif font-bold text-gray-800 mb-12">Kontak Saya</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <a href="mailto:dahlialiaa140@gmail.com" class="p-6 bg-white rounded-2xl border border-pink-100 hover:scale-105 transition-transform shadow-sm">
-                    <i class="fas fa-envelope text-pink-500 text-3xl mb-3"></i>
-                    <p class="font-bold text-sm">dahlialiaa140@gmail.com</p>
+            <h2 class="text-4xl font-serif font-bold text-gray-800 mb-12">Mari Berkolaborasi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="mailto:dahlialiaa140@gmail.com" class="p-8 bg-white rounded-3xl border border-pink-100 hover:scale-105 transition-transform card-shadow">
+                    <i class="fas fa-envelope text-pink-500 text-4xl mb-4"></i>
+                    <p class="font-bold text-gray-800">Email</p>
+                    <p class="text-gray-400 text-xs mt-1 truncate">dahlialiaa140@gmail.com</p>
                 </a>
-                <a href="https://www.instagram.com/th3vyll.vvai" target="_blank" class="p-6 bg-white rounded-2xl border border-pink-100 hover:scale-105 transition-transform shadow-sm">
-                    <i class="fab fa-instagram text-pink-500 text-3xl mb-3"></i>
-                    <p class="font-bold text-sm">@th3vyll.vvai</p>
+                <a href="https://www.instagram.com/th3vyll.vvai" target="_blank" class="p-8 bg-white rounded-3xl border border-pink-100 hover:scale-105 transition-transform card-shadow">
+                    <i class="fab fa-instagram text-pink-500 text-4xl mb-4"></i>
+                    <p class="font-bold text-gray-800">Instagram</p>
+                    <p class="text-gray-400 text-xs mt-1">@th3vyll.vvai</p>
                 </a>
-                <a href="https://wa.me/628782755039" target="_blank" class="p-6 bg-white rounded-2xl border border-pink-100 hover:scale-105 transition-transform shadow-sm">
-                    <i class="fab fa-whatsapp text-pink-500 text-3xl mb-3"></i>
-                    <p class="font-bold text-sm">0878-2755-039</p>
+                <a href="https://wa.me/628782755039" target="_blank" class="p-8 bg-white rounded-3xl border border-pink-100 hover:scale-105 transition-transform card-shadow">
+                    <i class="fab fa-whatsapp text-pink-500 text-4xl mb-4"></i>
+                    <p class="font-bold text-gray-800">WhatsApp</p>
+                    <p class="text-gray-400 text-xs mt-1">0878-2755-039</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 bg-white text-center border-t border-pink-100">
-        <p class="text-gray-400 text-xs tracking-widest uppercase">&copy; 2026 Dahlia — Kreator Muda Indramayu</p>
+    <footer class="py-12 bg-white text-center border-t border-pink-100">
+        <p class="text-gray-400 text-xs tracking-widest uppercase">&copy; 2026 Dahlia — Kreator & Pelajar Inspiratif</p>
     </footer>
 
     <script>
